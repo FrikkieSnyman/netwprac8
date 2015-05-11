@@ -53,7 +53,7 @@ public class Client implements Runnable {
 		String htmlResponse = "";
 
 		try {
-			htmlResponse = server.getHTML("index.html");
+			htmlResponse = server.getHTML("index.wml");
 			
 			htmlResponse = htmlResponse.replace("replaceMe", msg);
 		} catch (Exception e) {

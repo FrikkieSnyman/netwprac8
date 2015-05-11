@@ -10,19 +10,16 @@
 				<a href="delete.wml">Delete Contact</a><br/>
 			</p>
 			<p>
-				<!-- <fieldset> -->
-					<!-- <legend>Add</legend> -->
-					Name: <input name="name" size="12"/>
+				Name: <input name="name" size="12"/>
 
-					Number: <input name="number" size="12" format="*N"/>
-					<anchor>
-						Submit Data
-						<go method="get" href="/add">
-							<postfield name="name" value="$(name)"/>
-							<postfield name="number" value="$(number)"/>
-						</go>
-					</anchor>
-				<!-- </fieldset> -->
+				Number: <input name="number" size="12" format="*N"/>
+				<anchor>
+					Submit Data
+					<go method="get" href="/add">
+						<postfield name="name" value="$(name)"/>
+						<postfield name="number" value="$(number)"/>
+					</go>
+				</anchor>
 			</p>
 		</card>
 	</wml>

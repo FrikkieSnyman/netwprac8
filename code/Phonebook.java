@@ -68,7 +68,6 @@ public class Phonebook implements Serializable {
 	public String findContact(String keyword) {
 		boolean found = false;
 		String returnString = "";
-
 		Iterator iterator = contactList.iterator();
 		Contact current = null;
 
