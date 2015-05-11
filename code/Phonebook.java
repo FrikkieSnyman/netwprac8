@@ -71,21 +71,21 @@ public class Phonebook implements Serializable {
 		Iterator iterator = contactList.iterator();
 		Contact current = null;
 
+		returnString += "<table><tr><td>Name</td><td>Number</td></tr>";
+
 		while (iterator.hasNext()) {
 			current = (Contact) iterator.next();
 
 			if (current.name.equals(keyword) || current.number.equals(keyword)) {
+				returnString += "<tr><td>" + current.getName() + "</td><td>" + current.getNumber() + "</td></tr>";
+
 				found = true;
-				break;
 			}
 		}
 
-		if (found) {
-			returnString += "<table><tr><td>Name</td><td>Number</td></tr>";
-			returnString += "<tr><td>" + current.getName() + "</td><td>" + current.getNumber() + "</td></tr>";
-			returnString += "</table>";
-		}
-		else {
+		returnString += "</table>";
+		
+		if (!found) {
 			returnString = keyword + " was not found in the phonebook";
 		}
 
