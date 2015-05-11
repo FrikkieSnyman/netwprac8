@@ -1,3 +1,6 @@
+// Andre Calitz 13020006
+// Frikkie Snyman 13028741
+
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
