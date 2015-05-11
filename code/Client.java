@@ -79,17 +79,17 @@ public class Client implements Runnable {
 		if (request.equals("/")) {
 			writeHTML("index.wml");
 		}
-		else if (request.equals("/add.html")) {
-			writeHTML("add.html");
+		else if (request.equals("/add.wml")) {
+			writeHTML("add.wml");
 		}
-		else if (request.equals("/find.html")) {
-			writeHTML("find.html");
+		else if (request.equals("/find.wml")) {
+			writeHTML("find.wml");
 		}
-		else if (request.equals("/update.html")) {
-			writeHTML("update.html");
+		else if (request.equals("/update.wml")) {
+			writeHTML("update.wml");
 		}
-		else if (request.equals("/delete.html")) {
-			writeHTML("delete.html");
+		else if (request.equals("/delete.wml")) {
+			writeHTML("delete.wml");
 		}
 		else if (request.contains("?")) {
 			StringTokenizer tokenizer = new StringTokenizer(request, "\\?");
