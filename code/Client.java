@@ -33,9 +33,9 @@ public class Client implements Runnable {
 		try {
 			htmlResponse = server.getHTML(page);
 
-			// if (page.equals("index.html")) {
-			// 	htmlResponse = htmlResponse.replace("replaceMe", server.phonebook.getPhonebook());
-			// }			
+			if (page.equals("index.wml")) {
+				htmlResponse = htmlResponse.replace("replaceMe", server.phonebook.getPhonebook());
+			}			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
