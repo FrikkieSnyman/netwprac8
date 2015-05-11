@@ -22,6 +22,7 @@ public class Client implements Runnable {
 	public void run() {
 		try {
 			handleRequest();
+			server.savePhonebook();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
