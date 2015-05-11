@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE wml PUBLIC "-//WAPFORUM//DTD WML 1.1//EN" "http://www.wapforum.org/DTD/wml_1.1.xml">
+	<wml>
+		<card id="home" title="COS332 - Prac8">
+			<p>
+				<a href="/">Home</a><br/>
+				<a href="add.wml">Add Contact</a><br/>
+				<a href="find.wml">Find Contact</a><br/>
+				<a href="update.wml">Update Contact</a><br/>
+				<a href="delete.wml">Delete Contact</a><br/>
+			</p>
+			<p>
+				Name: <input name="name" size="12"/>
+				<anchor>
+					Submit Data
+					<go method="get" href="/delete">
+						<postfield name="name" value="$(name)"/>
+					</go>
+				</anchor>
+			</p>
+		</card>
+	</wml>
