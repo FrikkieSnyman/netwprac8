@@ -3,15 +3,14 @@
 	<wml>
 		<card id="home" title="The Octane Group">
 			<p>
-				<a href="assets.wml">List all</a> <br/>
-				<a href="benefits.wml">Benefits</a> <br/>
-				<a href="experience.wml">Experience</a> <br/>
-				<a href="clients.wml">Clients</a> <br/>
-				<a href="team.wml">Team</a> <br/>
-				<a href="contact.wml">Contact</a> <br/>
-				<br/>
-
-				<small>The Octane Group, LLC &#169; 2001</small>
+				<a href="/">Home</a><br/>
+				<a href="add.wml">Add Contact</a><br/>
+				<a href="find.wml">Find Contact</a><br/>
+				<a href="update.wml">Update Contact</a><br/>
+				<a href="delete.wml">Delete Contact</a><br/>
+			</p>
+			<p>
+			replaceMe
 			</p>
 		</card>
 	</wml>
