@@ -1,42 +1,93 @@
-// Created by:
-// Fredercik Hendrik Snyman 13028741
-// Hugo Greyvenstein        13019989
-
 import java.io.*;
 import java.net.*;
-import java.security.*;
+import java.util.Scanner;
+import java.util.ArrayList;
 
-public class Server{
-	private static int port;
-	private static IOManip io = new IOManip(System.out);
+public class Server {
+	public static Phonebook phonebook = null;
 
-	public static void main(String[] args){
-		int argc = args.length;
-		int connections = 0;
-		if (argc != 1) {
-			System.out.println("Not enough actual parameters. java Server <port>");
-			System.exit(0);
-		}
+	public void start(int port) {
+		try {
+			ServerSocket server = new ServerSocket(port);
 
-		port = Integer.parseInt(args[0]);
+			while (true) {
+				// System.out.println("Waiting for request");
 
-		try{
+				Socket socket = server.accept();
 
-			ServerSocket listener = new ServerSocket(port);
-			Socket server;
+				Client client = new Client(socket, this);
+				Thread t = new Thread(client);
 
-			while (true){
-			    server = listener.accept();
-			    Client client = new Client(server,connections++);
-			    System.out.println("New connection. Connection nr: " + connections);
-			    Thread t = new Thread(client);
-			    t.start();
+				t.start();
+
+				// System.out.println("Request revieved");
 			}
-		} catch (IOException e){
+		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			io.setColor("reset");
+		}
+	}
+
+	public String getHTML(String fileName) throws FileNotFoundException, IOException {
+		BufferedReader br = new BufferedReader(new FileReader(fileName));
+		String html = "";
+		String temp = "";
+
+		while ((temp = br.readLine()) != null) {
+			html += temp;
 		}
 
+		return html;
+	}
+
+	public void print(String text) {
+		System.out.println(text);
+	}
+
+	@SuppressWarnings("unchecked")
+	public void constructPhonebook() {
+		try {
+			FileInputStream fileIn = new FileInputStream("phonebook.txt");
+			ObjectInputStream in;
+
+			phonebook = new Phonebook();
+
+			if (fileIn.available() != 0) {
+				in = new ObjectInputStream(fileIn);
+
+				phonebook.contactList = (ArrayList<Contact>) in.readObject();
+
+				in.close();
+			}
+
+			fileIn.close();
+		} catch (IOException i) {
+			i.printStackTrace();
+		} catch (ClassNotFoundException c) {
+			System.out.println("Contact class not found");
+			c.printStackTrace();
+		}
+
+		System.out.println(phonebook.getPhonebook());
+	}
+
+	@SuppressWarnings("unchecked")
+	public void savePhonebook() {
+		System.out.println(phonebook.getPhonebook());
+
+		if (phonebook.isEmpty()) {
+			return;
+		}
+
+		try {
+			OutputStream fileOut = new FileOutputStream("phonebook.txt");
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+
+			out.writeObject(phonebook.contactList);
+
+			out.close();
+			fileOut.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
