@@ -10,11 +10,16 @@
 				<a href="delete.wml">Delete Contact</a><br/>
 			</p>
 			<p>
-				<!-- <fieldset>
-
-				</fieldset> -->
+		
+				Name: <input name="name" size="12"/>
+					
+		
 				<anchor>
-					Chapter 2 : <go href="chapter2.wml"/>
+					Submit
+					<go method="get" href="/find">
+						<postfield name="name" value="$(name)"/>
+					</go>
+					<!-- Chapter 2 : <go href="chapter2.wml"/> -->
 				</anchor>
 			</p>
 		</card>
